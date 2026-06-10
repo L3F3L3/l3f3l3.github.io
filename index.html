@@ -1,38 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>w3lc0m3</title>
+<title>W3LC0M3</title>
 <style>
-    body {
-        background-image: url('bg.jpg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: scroll;
+    @font-face {
+    font-family: myFont;
+    src: url(windows-xp-tahoma.otf);
     }
-    div {
+
+    body {
+        display: flex;
+        flex-wrap: wrap;
+        background-image: url('backgroundjpg.jpg');
+        font-family: myFont;
+        font-size: 25px;
+        cursor: url("larrow.png"), default;
+    }
+
+    a {
+        font-size: 28px;
+        color: white;
+        background-color: #0062EA;
+        border-style: ridge;
+        border-color: #0062EA;
+        border-width: 7px 7px 7px 7px;
+        border-radius: 5px;
+        padding: 1% 1% 1% 1%;
+        cursor: url("llink.png"), pointer;
+    }
+
+    a:hover {
+        background-color: #14A5F4;
+        font-size: 23px;
+    }
+
+    .window {
+        margin: 2% 2% 2% 2%;
+        border-style: ridge;
+        border-color: #0062EA;
+        border-width: 10px 7px 7px 7px;
+        border-radius: 5px;
+        background-color: #E6EAD8;
+    }
+    .title {
+        text-align: left;
+        padding: 1% 1% 1% 1%;
+        background-color: #0062EA;
+    }
+    .content {
         text-align: center;
-        max-height: 50%;
-        max-width: 50%;
-        background-color: powderblue;
-        margin: 10% 25% 10% 25%;
+        padding: 1% 1% 1% 1%;
+        background-color: #E6EAD8;
+    }
+
+    #greetings{
+        height: 50%;
+        width: 50%;
+    }
+
+    #popup{
+        height: 25%;
+        width: 25%;
+    }
+
+    #player{
+        height: 50%;
+        width: 50%;
+    }
+
+    #links{
+        height: 50%;
+        width: 25%;
     }
 </style>
 </head>
 <body>
-<div>
-Greetings, I'm L3f3l3!
-I make chaotic electronic music as well as digital art, which you can find on the following platforms:
+<div class="window" id="greetings">
+<section class="title"><img src="main.png" style="width:24px;height:24px;"> GR33T1NG5</section>
+<section class="content">
+Hiii! I'm L3f3l3, a music producer who also draws for fun. I started using FL Studio over a year ago, i like to experiment but really my main thing is good ol techno.
+</br>
+
+</br>
+</section>
+</div>
+
+
+<div class="window" id="popup">
+<section class="title"><img src="error.png" style="width:24px;height:24px;"> 3RR0R</section>
+<section class="content">
+Streaming platforms like Spotify don't pay much for small artists, so if you want to support me go grab one of my songs or album on Bandcamp! Its name-your-own-price, you can always get them for free as well, no worries.
+</br>
+Thank you!
 </br>
 </br>
-<a href="https://www.instagram.com/l3f3l3/">Instagram</a></br>
-<a href="https://www.youtube.com/@L3f3l3">Youtube</a></br>
-<a href="https://www.deezer.com/fr/artist/386133571">Deezer</a></br>
-<a href="https://open.spotify.com/intl-fr/artist/00M2I2O2yf9CLZW1oajiwO">Spotify</a></br>
-<a href="https://tidal.com/artist/78175811">Tidal</a></br>
-<a href="https://l3f3l3.bandcamp.com/music">Bandcamp</a></br>
-<a href="https://soundcloud.com/l3f3l3">Soundcloud</a></br>
+<a>Ok</a>      <a>Sure</a></br></br>
+</section>
+</div>
+
+
+<div class="window" id="player">
+<section class="title"><img src="player.png" style="width:24px;height:24px;"> V1D30_PL473R</section>
+<section class="content"><!--
+<video width="640" height="480" controls>
+  <source src="movie.mp4" type="video/mp4">
+</video>-->
+Under construction...
+</section>
+</div>
+
+
+<div class="window" id="links">
+<section class="title"><img src="links.png" style="width:24px;height:24px;"> L1NK5</section>
+<section class="content">
 </br>
-Hey, streaming platforms like Spotify don't pay very well for small artists so if you want to support me go grab one of my songs or album on Bandcamp! Its name-your-own-price so you can always get them for free as well!
+<a href="https://www.instagram.com/l3f3l3/"><img src="insta.png" style="width:32px;height:32px;position:relative;top:10px;"> Instagram</a></br>
+</br>
+<a href="https://www.youtube.com/@L3f3l3"><img src="youtube.png" style="width:32px;height:32px;position:relative;top:10px;"> Youtube</a></br>
+</br>
+<a href="https://l3f3l3.bandcamp.com/music"><img src="bandcamp.png" style="width:32px;height:32px;position:relative;top:10px;"> Bandcamp</a></br>
+</br>
+<a href="https://open.spotify.com/intl-fr/artist/00M2I2O2yf9CLZW1oajiwO"><img src="spotify.png" style="width:32px;height:32px;position:relative;top:10px;"> Spotify</a></br>
+</br>
+<a href="https://tidal.com/artist/78175811"><img src="tidal.png" style="width:32px;height:32px;position:relative;top:10px;"> Tidal</a></br>
+</br>
+<a href="https://www.deezer.com/fr/artist/386133571"><img src="deezer.png" style="width:32px;height:32px;position:relative;top:10px;"> Deezer</a></br>
+</br>
+<a href="https://soundcloud.com/l3f3l3"><img src="soundcloud.png" style="width:32px;height:32px;position:relative;top:10px;"> Soundcloud</a></br>
+</br>
+</section>
 </div>
 
 </body>
