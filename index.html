@@ -17,7 +17,7 @@
         background-attachment: fixed;
         background-size: cover;
         font-family: myFont;
-        font-size: 1.5vmax;
+        font-size: 2vmax;
         cursor: url("larrow.png"), default;
 	color: #FFFFFF;
     }
@@ -30,21 +30,60 @@
 
     a:hover {
 	text-decoration: overline;
-        font-size: 1.75vmax;
+        font-size: 3vmax;
     }
 
 	h1{
-		font-size: 4vmax;
+		font-size: 5vmax;
 	}
 	h2{
-		font-size: 2vmax;
+		font-size: 3vmax;
 	}
 	h3{
-		font-size: 1.5vmax;
+		font-size: 2.5vmax;
 	}
+.slider {
+  -webkit-appearance: none;
+  width: 10rem;
+  height: 1rem; 
+  border-radius: 1rem; 
+  background: white;
+  outline: none;
+  position:fixed;
+  right: 80%;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1; 
+}
+
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  border: 0; 
+  background: url('sound.png');
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border: 0;
+  background: url('sound.png');
+  cursor: pointer;
+}
+
 </style>
 </head>
 <body>
+
+<input type="range" min="1" max="100" value="50" class="slider" id="volume-slider">
 
 <h1>WELCOME</h1>
 <h2>how far have you wandered to end up here?</h2>
@@ -67,6 +106,15 @@
 
 <a href="https://www.deezer.com/fr/artist/386133571" target="_blank">Deezer</a>
 
-<audio src="bg.mp3" autoplay loop></audio>
+
+<script>
+let audio = new Audio("bg.mp3");
+audio.loop = true;
+audio.play();
+let volume = document.getElementById('volume-slider');
+volume.addEventListener("change", function(e) {
+    audio.volume = e.currentTarget.value / 100;
+})
+</script>
 </body>
 </html>
