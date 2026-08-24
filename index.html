@@ -1,206 +1,394 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<title>???</title>
-<style>
-    @font-face {
-    font-family: bluescreen;
-    src: url(bluescreen.ttf);
-    }
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>???</title>
+	<style>
+		:root {
+			--text: #333333;
+			--line: #f1e5cb;
+			--accent: #6B85AE;
+			--bg: #8496AE;
+			--fill: whitesmoke;
+		}
 
-    @font-face {
-    font-family: winxp;
-    src: url(winxp.ttf);
-    }
+		@font-face {
+			font-family: bluescreen;
+			src: url(bluescreen.otf);
+		}
 
-    body {
-	text-align: center;
-        background-image: url("background.png");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        font-family: bluescreen;
-        font-size: 2vmax;
-        cursor: url("larrow.png"), default;
-	color: #000000;
-    }
+		body {
+			color: var(--text);
+			font-family: bluescreen, sans-serif;
+			cursor: url("larrow.png"), default;
+		}
 
-    a {
-	text-decoration: none;
-        cursor: url("llink.png"), pointer;
-	color: #000000;
-	font-size: 1.75vmax;
-    }
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+			scrollbar-color: var(--text) var(--line);
+		}
 
-    a:hover {
-	text-decoration: overline;
-        font-size: 2vmax;
-    }
+		*::-webkit-scrollbar { width: 20px; }
+		*::-webkit-scrollbar-track { background: var(--line); }
+		*::-webkit-scrollbar-thumb { background-color: var(--text); border: transparent; }
 
-	h1{
-		font-size: 5vmax;
-	}
-	h2{
-		font-size: 2.5vmax;
-	}
-h3{
-		font-size: 2vmax;
-	}
-h4{
-		font-size: 1.75vmax;
-	}
+		img { max-width: 100% }
 
-h5{
-		font-size: 1.25vmax;
-	}
+		nav {
+			float: left;
+			width: 15%;
+			height: 100vh;
+			position: relative;
+			background-image: url("background.png");
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
 
-h6{
-		font-size: 1vmax;
-	}
+		nav div {
+			height: fit-content;
+			width: fit-content;
+			position: absolute;
+			top: 50%;
+			-ms-transform: translateY(-50%);
+			transform: translateY(-50%);
+			right: -1.5vw;
+			text-align: right;
+		}
 
-h7{
-		font-size: 0.70vmax;
-	}
+		nav a {
+			display: block;
+			margin: 10px 0;
+			padding: 0;
+			font-size: 1.5em;
+			text-decoration: none;
+			color:var(--fill);
+			filter: drop-shadow(1px 1px 0 var(--text))
+					drop-shadow(-1px 1px 0 var(--text))
+					drop-shadow(0 -1px 0 var(--text))
+					drop-shadow(1px 0 var(--text));
+		}
 
-img.icon {
-    	object-fit: cover;
-}
+		nav a:hover, nav a:focus {
+			color: var(--accent);
+			cursor: url("llink.png"), pointer;
+		}
 
-.bar{
-	position: fixed;
-	text-align: center;
-}
+		main {
+			float:left;
+			width: 82%;
+			height: 100vh;
+			padding: 2em;
+			overflow-y: scroll;
+			background-image: url("background.png");
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
 
-.slider_container{
-	width: 15%;
-	position:fixed;
-  	right: 80%;
-}
+		.container { max-width: 1500px }
 
-.slider {
-  -webkit-appearance: none;
-  height: 0.25rem; 
-  border-radius: 1rem; 
-  background: black;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: .2s;
-  transition: opacity .2s;
-  cursor: url("llink.png"), pointer;
-}
+		section {
+			margin: 2em 0;
+			padding: 1em 2em;
+			background-color: var(--fill);
+			border: 5px solid var(--line);
+		}
 
-.slider:hover {
-  opacity: 1; 
-  cursor: url("llink.png"), pointer;
-}
+		.stripe {
+			float: left;
+			width: 3%;
+			height: 100vh;
+			background-color: var(--line);
+		}
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 2rem;
-  height: 2rem;
-  border: 0; 
-  opacity: 1; 
-  background-image: url('sound.png');
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  cursor: url("llink.png"), pointer;
-}
+		hr {
+			border: none;
+			border-top: 5px solid var(--line);
+		}
 
-.slider::-moz-range-thumb {
-  -moz-appearance: none;
-  appearance: none;
-  width: 2rem;
-  height: 2rem;
-  border: 0; 
-  opacity: 1; 
-  background-color: transparent;
-  background-image: url('sound.png');
-  background-size: contain;
-  background-position: center center;
-  background-repeat: no-repeat;
-  cursor: url("llink.png"), pointer;
-}
+		header {
+			font-size: 2em;
+			margin-bottom: 2rem;
+			color:var(--fill);
+			filter: drop-shadow(1px 1px 0 var(--text))
+					drop-shadow(-1px 1px 0 var(--text))
+					drop-shadow(0 -1px 0 var(--text))
+					drop-shadow(1px 0 var(--text));
+		}
 
-</style>
+		h2, h3, h4, h5, h6, p, table, details, cite, blockquote, img {
+			margin: 1rem 0;
+		}
+
+		ul, ol, dl {
+			margin: 1rem 0 1rem 2rem;
+		}
+
+		ul ul, ol ol {
+			margin: 0 0 0 2rem;
+		}
+
+		p, table,  ul, ol, dl {
+			font-size: 1rem;
+		}
+
+		a {
+			color: var(--accent);
+			padding: 2px;
+		}
+
+		p a:hover {
+			color: var(--fill);
+			background-color: var(--accent);
+			cursor: url("llink.png"), pointer;
+		}
+
+		h6 { font-size: 1em; }
+		h5 { font-size: 1.25em; }
+		h4 { font-size: 1.5em; }
+		h3 { font-size: 1.75em; }
+		h2 { font-size: 2em;
+			text-align: center;
+			background-color: var(--accent);
+			padding: 5px;
+		}
+
+		blockquote {
+			background-color: var(--accent);
+			color: var(--fill);
+			padding: 1em;
+		}
+
+		blockquote a, blockquote code {
+			color: var(--text);
+		}
+
+		cite {
+			display: block;
+			text-align: right;
+		}
+
+		code, details, pre {
+			background-color: var(--bg);
+		}
+
+		code {
+			font-family: 'Courier New', monospace;
+			padding: 2px;
+		}
+
+		details, pre {
+			padding: 1em;
+		}
+
+		pre { overflow-x: auto; }
+
+		details p { margin: 1rem 0 1rem 2rem; }
+
+		table {	border: 5px solid var(--line); }
+		tr, td, th { border: 2px solid var(--line); }
+		td, th { padding: 3px }
+
+		figcaption {
+			text-align: center;
+			margin: -0.5em 1em 1em 1em;
+		}
+
+		.flex-box {
+			display:flex;
+			flex-wrap:wrap;
+			margin: -1em;
+			align-items: flex-start;
+		}
+
+		.flex-box section {
+			margin: 1em;
+			}
+
+		.full { flex: 1 1 100%;}
+		.half { flex: 1 1 calc(50% - 2em); }
+		.third { flex: 1 1 calc(33% - 2em); }
+		.twothird { flex: 1 1 calc(66% - 2em); }
+		.quarter { flex: 1 1 calc(25% - 2em); }
+		.threequarter { flex: 1 1 calc(75% - 2em); }
+
+		.gallery {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.gallery img{
+			width: 300px;
+			height: 300px;
+			padding: 1% 1% 1% 1%;
+			object-fit: cover;
+		}
+
+		.gallery img:hover {
+			transform: scale(1.3);
+			transition: transform ease 0.5s;
+			cursor: url("llink.png"), pointer;
+		}
+
+		.gallery img.full {
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 99;
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			background: rgba(0, 0, 0, 0.7);
+		}
+
+		.slider {
+			-webkit-appearance: none;
+			height: 0.5rem;
+			background: var(--line);
+			outline: none;
+			opacity: 0.7;
+			-webkit-transition: .2s;
+			transition: opacity .2s;
+			cursor: url("llink.png"), pointer;
+		}
+		.slider:hover {
+			opacity: 1;
+			cursor: url("llink.png"), pointer;
+		}
+		.slider::-webkit-slider-thumb {
+			-webkit-appearance: none;
+			appearance: none;
+			width: 20px;
+			height: 20px;
+			background-color: var(--text);
+			outline: 2px solid var(--accent);
+			cursor: url("llink.png"), pointer;
+		}
+		.slider::-moz-range-thumb {
+			-moz-appearance: none;
+			appearance: none;
+			width: 20px;
+			height: 20px;
+			background-color: var(--text);
+			outline: 2px solid var(--accent);
+			cursor: url("llink.png"), pointer;
+		}
+		@media screen and (max-width: 800px){
+			nav, main, .stripe {
+				float: none;
+				width: 100%;
+				height: fit-content;
+			}
+
+			nav { padding: 2vw }
+
+			nav div {
+				height: fit-content;
+				width: 100%;
+				position: static;
+				-ms-transform: translateY(0);
+				transform: translateY(0);
+				text-align: right;
+			}
+
+			nav img {
+				z-index: -1;
+				position: absolute;
+				left:0;
+				max-height: 100%;
+			}
+
+			nav a {
+				display: inline-block;
+				margin: 5px;
+			}
+
+			nav a::after { content: " ↗"; }
+
+			main {
+				overflow: auto;
+				padding: 2em 1em;
+			}
+
+			header {
+				text-align: center;
+				font-size: 1.5em;
+			}
+
+			section { padding: 0 1em; }
+
+			.stripe { height: 30px; }
+
+			*::-webkit-scrollbar { width: 10px; }
+
+		}
+	</style>
 </head>
 <body>
-<a href="https://www.instagram.com/l3f3l3/" target="_blank">Instagram|</a> 
+<nav>
+	<div>
+	<img src="eye1.gif" alt="">
+	<a href="https://www.instagram.com/l3f3l3/" target="_blank">Instagram</a>
+	<a href="https://bsky.app/profile/l3f3l3.bsky.social/" target="_blank">Bluesky</a>
+	<a href="https://l3f3l3.bandcamp.com/music" target="_blank">Bandcamp</a>
+	<a href="https://soundcloud.com/l3f3l3" target="_blank">Soundcloud</a>
+	<a href="https://www.youtube.com/@L3f3l3" target="_blank">Youtube</a>
+	<a href="https://open.spotify.com/intl-fr/artist/00M2I2O2yf9CLZW1oajiwO" target="_blank">Spotify</a>
+	<a href="https://www.deezer.com/fr/artist/386133571" target="_blank">Deezer</a>
+	<input type="range" min="0" max="100" value="10" id="volume-slider" class="slider">
+	</div>
+</nav>
+<div class="stripe"></div>
+<main>
+<div class="container">
+<header>
+	<h1>Welcome to hell</h1>
+</header>
+<section>
+	<h2>Wow, you found me!</h2>
+	<p>Hii! I'm L3F3L3, a french producer who's been making weird music since 2024. My main inspiration is techno but i don't really have a specific genre to be honest, i just try to make the kind of music i'd enjoy listening to and hope others enjoy it as well.</br></br>
+So far i've released two albums (<a href="https://l3f3l3.bandcamp.com/album/vacuity32" target="_blank">VACUITY32</a> and <a href="https://l3f3l3.bandcamp.com/album/snails" target="_blank">SNAILS</a>) as well as a bunch of standalone tracks, there's also a third album on the way so stay stuned for that!</br></br>
+All my music is available for streaming (Spotify, Deezer, Tidal and Youtube Music) as well as downloadable for free (Bandcamp or Soundcloud), however if you'd like to support me you can buy a track or an album for the price you want on Bandcamp! You're also free to use my music for any purpose as long i'm credited :]
+	</p>
+	<hr>
+	<h2>Gallery</h2>
+	<p>A bunch of drawings and pictures i made for fun</p>
+	<div class="gallery">
+		<img src="1.png">
+		<img src="2.jpg">
+		<img src="3.png">
+		<img src="4.png">
+		<img src="5.png">
+	</div>
+</section>
+</div>
+</main>
 
-<a href="https://bsky.app/profile/l3f3l3.bsky.social/" target="_blank">Bluesky|</a> 
-
-<a href="https://l3f3l3.bandcamp.com/music" target="_blank">Bandcamp|</a>
-
-<a href="https://soundcloud.com/l3f3l3" target="_blank">Soundcloud|</a> 
-
-<a href="https://www.youtube.com/@L3f3l3" target="_blank">Youtube|</a>
-
-<a href="https://open.spotify.com/intl-fr/artist/00M2I2O2yf9CLZW1oajiwO" target="_blank">Spotify|</a>
-
-<a href="https://www.deezer.com/fr/artist/386133571" target="_blank">Deezer|</a>
-<div class="slider_container"><input type="range" min="0" max="100" value="10" id="volume-slider" class="slider"></div>
-
-
-<h1>WELCOME</h1><img src="eye1.gif" width="10%" height="10%">
-<h2>Congrats, you found this place</h2>
-<h3>There isn't much to see here but feel free to stay nonetheless</h3>
-<h4>Or don't, i'm not keeping you hostage or anything. I mean its a web page, you can close it whenever you want, right?</h4>
-<h5>...Right?</h5>
-<h5>...</h5>
-<h6>...</h6>
-<h4>Oh, you're still here!</h4>
-<h4>Not that i mind or anything, i'm glad you stayed</h4>
-<h5>I hope that means the place is cozy</h5>
-<h5>...</h5>
-<h4>Hey idk if you noticed but there's a bunch of links up there, if you're bored you can click them y'know</h4>
-<h5>I'm not forcing you or anything tho</h5>
-<h6>...</h6>
-<h5>Sorry, this is kind of ankward</h5>
-<h4>I'm not very good at conversations, and as you can tell i'm running out of things to say</h4>
-<h4>...</h4>
-<h4>May i show you something?</h4>
-<h5>Just... Don't be rude, okay?</h5>
-<h6>Alrigth...</h6>
-<img src="rodrigue.png" alt="Snail" width="500" height="500">
-<h4>This is Rodrigue.</h4>
-<h5>He is a snail.</h5>
-<h5>...</h5>
-<h5>Yea</h5>
-<h5>...</h5>
-<h5>I have a strange request to make</h5>
-<h5>Could you, like...</h5>
-<h4>Tell him he's handsome?</h4>
-<h5>He is pretty self conscious</h5>
-<h6>Well, for a snail</h6>
-<h5>...</h5>
-<h5>...</h5>
-<h5>Thank you, i'm sure this means a lot to Rodrigue</h5>
-<h6>...</h6>
-<h5>I think</h5>
-<h6>...</h6>
-<h6>I don't speak snail tho</h6>
-</br>
-<h5>By the way, are you enjoying the tune in the background?</h5>
-<h6>You can mute it if that's not the case</h6>
-<h6>That's what the volume slider in the top left corner is for</h6>
-<h6>The thing that slides volume</h6>
-<h6>Yea</h6>
-<h6>That thing</h6>
-<h6>...</h6>
-<h7>Yea...</h7> </br>
+<audio src="1.mp3" id="bgm" autoplay></audio>
 
 <script>
-let audio = new Audio("bg.mp3");
+let audio = document.getElementById("bgm"),
+    playlist = ["1.mp3", "2.mp3", "3.mp3"],
+    current = 0;
 audio.volume = 0.10;
-audio.loop = true;
-audio.play();
 let volume = document.getElementById('volume-slider');
 volume.addEventListener("change", function(e) {
     audio.volume = e.currentTarget.value / 100;
 })
+audio.onended = () => {
+  current++;
+  if (current >= playlist.length) { current = 0; }
+  audio.src = playlist[current];
+  audio.pause();
+  audio.load();
+  audio.play();
+};
+const imgs = document.querySelectorAll('.gallery img');
+imgs.forEach(img => {img.addEventListener('click', function() {img.onclick = () => img.classList.toggle("full");})})
 </script>
 </body>
 </html>
